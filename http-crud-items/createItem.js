@@ -16,9 +16,21 @@ module.exports.handler = async (event) => {
     },
   };
 
-  await dynamoDb.put(params).promise();
-
-  return {
-    statusCode: 201,
+  try {
+    await dynamoDb.put({
+      ...params,
+      ConditionExpression: 'attribute_not_exists(id)',  
+    }).promise();
+  
+    return {
+      statusCode: 201,
+    }
+  } catch (err) {
+    return {
+      body: JSON.stringify({
+        error: err.message,
+      }),
+      statusCode: 500,
+    }
   }
 };
