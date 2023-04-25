@@ -22,18 +22,24 @@ provider:
 functions:
   createItem:
     handler: createItem.handler
+    url:
+      cors: true
     events:
       - httpApi:
           path: /
           method: post
   deleteItem:
     handler: deleteItem.handler
+    url:
+      cors: true
     events:
       - httpApi:
           path: /{id}
           method: delete
   getItems:
     handler: getItems.handler
+    url:
+      cors: true
     events:
       - httpApi:
           path: /
