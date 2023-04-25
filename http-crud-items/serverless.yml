@@ -1,0 +1,49 @@
+org: aatishdubey123
+app: http-crud-items-test
+service: http-crud-items-test
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: ap-south-1
+  environment:
+    DB_TABLE: ${self:service}-${sls:stage}
+    PRIMARY_KEY: id
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:PutItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.DB_TABLE}"
+
+functions:
+  createItem:
+    handler: createItem.handler
+    events:
+      - httpApi:
+          path: /
+          method: post
+  getItems:
+    handler: getItems.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
+resources:
+  Resources:
+    ItemsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+        TableName: ${self:service}-${sls:stage}
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
