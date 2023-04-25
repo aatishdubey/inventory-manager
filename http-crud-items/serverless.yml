@@ -26,6 +26,12 @@ functions:
       - httpApi:
           path: /
           method: post
+  deleteItem:
+    handler: deleteItem.handler
+    events:
+      - httpApi:
+          path: /{id}
+          method: delete
   getItems:
     handler: getItems.handler
     events:
