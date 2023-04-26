@@ -10,17 +10,11 @@ module.exports.handler = async (event) => {
 
   const result = await dynamoDb.scan(params).promise();
 
-  if(result.Count === 0) {
-    return {
-      statusCode: 404
-    }
-  }
-
   return {
     statusCode: 200,
     body: JSON.stringify({
       total: result.Count,
-      items: result.Items
+      items: result.Items.sort((a, b) => a.createdAt - b.createdAt)
     })
   }
 };

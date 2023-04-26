@@ -18,28 +18,27 @@ provider:
         - dynamodb:PutItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.DB_TABLE}"
+  httpApi:
+    cors: true
 
 functions:
   createItem:
+    memorySize: 256
     handler: createItem.handler
-    url:
-      cors: true
     events:
       - httpApi:
           path: /
           method: post
   deleteItem:
+    memorySize: 256
     handler: deleteItem.handler
-    url:
-      cors: true
     events:
       - httpApi:
           path: /{id}
           method: delete
   getItems:
+    memorySize: 256
     handler: getItems.handler
-    url:
-      cors: true
     events:
       - httpApi:
           path: /
