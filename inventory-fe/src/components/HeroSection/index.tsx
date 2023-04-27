@@ -9,7 +9,7 @@ export const HeroSection = () => {
             {APP_NAME} showcase using React + AWS Lambda
           </h1>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            This app is a demo showcase built with React, AWS Lambda, and DynamoDB. The app is styled with TailwindCSS, and uses React Query for data fetching and smart invalidation. The frontend app is deployed on Netlify, and the lambda functions are deployed to AWS through the Serverless Framework.
+            This app is a demo showcase built with React, AWS Lambda, and DynamoDB. The app is styled with TailwindCSS, and uses React Query for data fetching and caching. The frontend app is deployed on Netlify, and the lambda functions are deployed to AWS through the Serverless Framework.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <a
