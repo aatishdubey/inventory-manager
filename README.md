@@ -12,6 +12,7 @@ This repository contains two applications: a frontend React application called `
   - Styling with TailwindCSS for responsive and customizable UI
   - Vite for quick and easy bundling + HMR
   - TypeScript cause React without TypeScript feels handicapped
+  - AWS Cognito for User Authentication
 
 - Serverless backend (`serverless-http-api`) with:
   - API endpoints to support inventory management operations
@@ -62,6 +63,8 @@ This will start the development server and the application will be accessible at
 To sign in, use these information:
 username: admin
 password: Admin#123
+
+The above user is already setup and ready to login in my Cognito User Pool. To modify the User Pool info, update the config in ```src/config.ts```
 
 ### Backend Application (`serverless-http-api`)
 
