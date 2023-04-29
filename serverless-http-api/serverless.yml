@@ -38,6 +38,8 @@ functions:
       - httpApi:
           path: /
           method: post
+          authorizer: 
+            name: CognitoAuthorizer
   deleteItem:
     memorySize: 256
     handler: deleteItem.handler
@@ -45,6 +47,8 @@ functions:
       - httpApi:
           path: /{id}
           method: delete
+          authorizer: 
+            name: CognitoAuthorizer
   getItems:
     memorySize: 256
     handler: getItems.handler
@@ -52,6 +56,8 @@ functions:
       - httpApi:
           path: /
           method: get
+          authorizer: 
+            name: CognitoAuthorizer
 resources:
   Resources:
     ItemsTable:
