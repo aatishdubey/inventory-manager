@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react"
+import { Link } from "react-router-dom";
 import { APP_NAME } from "src/config";
+import { useCognitoAuth } from "src/hooks/useCognitoAuth";
 
 export const Navbar = () => {
+
+  const { userAuth } = useCognitoAuth();
 
   const [isTransparent, setIsTransparent] = useState(true);
 
@@ -28,7 +32,11 @@ export const Navbar = () => {
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold">{APP_NAME}</div>
           <div className="flex items-center">
-            <div>Logout</div>
+            {userAuth.accessToken && (
+              <div className="mr-4">
+                <Link to="/logout">Logout</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>
