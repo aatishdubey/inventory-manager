@@ -8,4 +8,7 @@ export default defineConfig({
     tsconfigPaths(),
     react()
   ],
+  define: {
+    global: 'window'
+  }
 })
