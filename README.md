@@ -59,6 +59,10 @@ npm run dev
 
 This will start the development server and the application will be accessible at `http://127.0.0.1:5173/`.
 
+To sign in, use these information:
+username: admin
+password: Admin#123
+
 ### Backend Application (`serverless-http-api`)
 
 To deploy the backend application to your preferred cloud platform, follow the instructions specific to that platform. However, if you want to deploy it to your AWS account, run the following command.
