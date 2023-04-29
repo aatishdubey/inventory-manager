@@ -19,7 +19,16 @@ provider:
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.DB_TABLE}"
   httpApi:
-    cors: true
+    cors:
+      allowedOrigins:
+      - 'https://cozy-praline-e3dec4.netlify.app'
+      - 'http://127.0.0.1:5173'
+    authorizers:
+      CognitoAuthorizer:
+        identitySource: $request.header.Authorization
+        issuerUrl: https://cognito-idp.ap-south-1.amazonaws.com/ap-south-1_7qMKR8qY5
+        audience:
+        - 10cj58s3hamc8v79ls4kkitv0v
 
 functions:
   createItem:
