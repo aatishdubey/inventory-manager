@@ -20,6 +20,7 @@ export const getProductsList = async (): Promise<IGetProductsListResponse> => {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("accessToken")
       },
     });
     return await response.json();
@@ -46,11 +47,13 @@ export const createProduct = async (args: TQueryArgs) => {
       method: "POST",
       headers: {
         "Content-Type": "x-www-form-url-encoded",
+        "Authorization": "Bearer " + localStorage.getItem("accessToken")
       },
       body: data,
     });
     return await response.json();
-  } catch (err) {
+  } catch (error) {
+    console.log("Error: ", JSON.stringify(error));
     throw new Error("Something went wrong.");
   }
 };
@@ -61,6 +64,7 @@ export const deleteProduct = async (id: string) => {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("accessToken")
       },
     });
     return { message: "Product deleted successfully." };
