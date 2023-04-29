@@ -2,6 +2,10 @@
 
 This repository contains two applications: a frontend React application called `inventory-fe` and a serverless backend called `serverless-http-api`.
 
+## View Live Demo
+
+[Live demo hosted on Netlify](https://cozy-praline-e3dec4.netlify.app/)
+
 ## Features
 
 - Frontend React application (`inventory-fe`) with:
@@ -61,8 +65,10 @@ npm run dev
 This will start the development server and the application will be accessible at `http://127.0.0.1:5173/`.
 
 To sign in, use these information:
-username: admin
-password: Admin#123
+
+```username: admin```
+
+```password: Admin#123```
 
 The above user is already setup and ready to login in my Cognito User Pool. To modify the User Pool info, update the config in ```src/config.ts```
 
