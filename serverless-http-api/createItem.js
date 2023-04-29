@@ -10,6 +10,10 @@ module.exports.handler = async (event) => {
     parsedData[key] = value;
   }
 
+  if(!parsedData.name || !parsedData.description || !parsedData.price || !parsedData.image) {
+    throw new Error("All fields are required!");
+  }
+
   const currentDate = new Date();
   const timestamp = currentDate.getTime();
 
@@ -38,11 +42,9 @@ module.exports.handler = async (event) => {
       }),
       statusCode: 201,
     }
-  } catch (err) {
+  } catch (error) {
     return {
-      body: JSON.stringify({
-        error: err.message,
-      }),
+      body: JSON.stringify(error),
       statusCode: 500,
     }
   }
