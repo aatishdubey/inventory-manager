@@ -53,7 +53,7 @@ export const Login = () => {
         </div>
       )}
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-        <form className="space-y-6" onSubmit={handleLogin}>
+        <form className="space-y-6 pb-6 border-b" onSubmit={handleLogin}>
           <div>
             <label
               htmlFor="username"
@@ -101,6 +101,18 @@ export const Login = () => {
             </button>
           </div>
         </form>
+        <div className="mt-6">
+          <div className="relative text-center flex flex-col space-y-2 items-center">
+            <p>View source</p>
+            <a
+              href="https://github.com/aatishdubey/inventory-manager"
+              target="_blank"
+              className="flex w-fit items-center rounded-md bg-blue-900 px-3.5 py-2.5 text-sm font-semibold text-blue-100 shadow-sm hover:bg-blue-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+            >
+              <img className="mr-1" src="/github.svg" width={16} height={16} />GitHub
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );
