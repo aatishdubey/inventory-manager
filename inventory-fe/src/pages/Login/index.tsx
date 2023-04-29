@@ -13,7 +13,7 @@ export const Login = () => {
     if (userAuth.accessToken && !authLoading) {
       navigate("/", { replace: true });
     }
-  }, [navigate, userAuth.accessToken]);
+  }, [navigate, userAuth.accessToken, authLoading]);
 
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
