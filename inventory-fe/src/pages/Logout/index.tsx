@@ -12,6 +12,9 @@ export const Logout = () => {
 
 
   useEffect(() => {
+    // Delay redirect to ensure signOut() execution is complete
+    // and localStorage is cleared.
+    // Not a great solution but it works for now.
     setTimeout(() => {
       if(!userAuth.accessToken)
       navigate("/login");
