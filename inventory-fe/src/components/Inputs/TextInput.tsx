@@ -4,18 +4,21 @@ import { Label, checkError } from ".";
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   prefixText?: string;
+  disableCheckError?: Array<"onChange" | "onBlur">;
 }
 
-export const TextInput = ({label, prefixText, ...props}: Props) => {
+export const TextInput = ({label, prefixText, disableCheckError, ...props}: Props) => {
   const [Error, setError] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleBlur = () => {
+    if(disableCheckError?.includes("onBlur")) return;
     const error = checkError(inputRef);
     setError(error);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if(disableCheckError?.includes("onChange")) return;
     if(Error) {
       const error = checkError(inputRef);
       setError(error);
